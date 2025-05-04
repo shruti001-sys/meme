@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - VibeMeme</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="profile-header">
+            <div class="profile-cover">
+                <img src="images/default-cover.jpg" alt="Cover Photo" id="coverPhoto">
+                <button class="edit-cover" id="editCoverBtn">
+                    <i class="fas fa-camera"></i>
+                </button>
+            </div>
+            <div class="profile-info">
+                <div class="profile-picture">
+                    <img src="images/default-avatar.png" alt="Profile Picture" id="profilePicture">
+                    <button class="edit-profile-pic" id="editProfilePicBtn">
+                        <i class="fas fa-camera"></i>
+                    </button>
+                </div>
+                <div class="profile-details">
+                    <h1 id="username">Loading...</h1>
+                    <p id="bio">Loading...</p>
+                    <div class="profile-stats">
+                        <div class="stat">
+                            <span id="memeCount">0</span>
+                            <label>Memes</label>
+                        </div>
+                        <div class="stat">
+                            <span id="followerCount">0</span>
+                            <label>Followers</label>
+                        </div>
+                        <div class="stat">
+                            <span id="followingCount">0</span>
+                            <label>Following</label>
+                        </div>
+                    </div>
+                </div>
+                <button class="edit-profile-btn" id="editProfileBtn">
+                    <i class="fas fa-edit"></i> Edit Profile
+                </button>
+            </div>
+        </div>
+
+        <div class="profile-content">
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="memes">My Memes</button>
+                <button class="tab-btn" data-tab="saved">Saved Memes</button>
+                <button class="tab-btn" data-tab="liked">Liked Memes</button>
+            </div>
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="memes">
+                    <div class="memes-grid" id="userMemes">
+                        <!-- Memes will be loaded here -->
+                    </div>
+                </div>
+                <div class="tab-pane" id="saved">
+                    <div class="memes-grid" id="savedMemes">
+                        <!-- Saved memes will be loaded here -->
+                    </div>
+                </div>
+                <div class="tab-pane" id="liked">
+                    <div class="memes-grid" id="likedMemes">
+                        <!-- Liked memes will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div class="modal" id="editProfileModal">
+        <div class="modal-content">
+            <h2>Edit Profile</h2>
+            <form id="editProfileForm">
+                <div class="form-group">
+                    <label for="editUsername">Username</label>
+                    <input type="text" id="editUsername" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="editBio">Bio</label>
+                    <textarea id="editBio" name="bio" rows="3"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="cancel-btn" id="cancelEdit">Cancel</button>
+                    <button type="submit" class="save-btn">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/profile.js"></script>
+</body>
+</html> 

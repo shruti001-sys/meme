@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            position: relative;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        input:invalid {
+            border-color: #dc3545;
+        }
+        input:valid {
+            border-color: #28a745;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #response {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            white-space: pre-wrap;
+            background-color: #f8f9fa;
+        }
+        .error {
+            color: #dc3545;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        .requirements {
+            font-size: 0.9em;
+            color: #6c757d;
+            margin-top: 5px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            border-left: 3px solid #007bff;
+        }
+        .requirements ul {
+            margin: 5px 0;
+            padding-left: 20px;
+        }
+        .requirements li {
+            margin: 3px 0;
+        }
+        .valid {
+            color: #28a745;
+        }
+        .invalid {
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <h1>Authentication Test</h1>
+    
+    <h2>Register</h2>
+    <form id="registerForm">
+        <div class="form-group">
+            <label for="reg-username">Username:</label>
+            <input type="text" id="reg-username" required pattern="[a-zA-Z0-9_]{3,}" title="Username must be at least 3 characters and can only contain letters, numbers, and underscores">
+            <div class="requirements">
+                Username Requirements:
+                <ul>
+                    <li>At least 3 characters long</li>
+                    <li>Only letters, numbers, and underscores allowed</li>
+                    <li>No spaces or special characters</li>
+                </ul>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="reg-email">Email:</label>
+            <input type="email" id="reg-email" required>
+            <div class="requirements">
+                Email Requirements:
+                <ul>
+                    <li>Must be a valid email address</li>
+                    <li>Example: user@example.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="reg-password">Password:</label>
+            <input type="password" id="reg-password" required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$" title="Password must be at least 6 characters long and contain at least one letter and one number">
+            <div class="requirements">
+                Password Requirements:
+                <ul>
+                    <li>At least 6 characters long</li>
+                    <li>Must contain at least one number</li>
+                    <li>Must contain at least one letter</li>
+                </ul>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="reg-confirm-password">Confirm Password:</label>
+            <input type="password" id="reg-confirm-password" required>
+        </div>
+        <button type="submit">Register</button>
+    </form>
+
+    <h2>Login</h2>
+    <form id="loginForm">
+        <div class="form-group">
+            <label for="login-email">Email:</label>
+            <input type="email" id="login-email" required>
+        </div>
+        <div class="form-group">
+            <label for="login-password">Password:</label>
+            <input type="password" id="login-password" required>
+        </div>
+        <button type="submit">Login</button>
+    </form>
+
+    <h2>Response</h2>
+    <pre id="response"></pre>
+
+    <script>
+        const API_URL = 'http://localhost:5000/api';
+        const responseDiv = document.getElementById('response');
+
+        // Test server connection on page load
+        window.addEventListener('load', async () => {
+            try {
+                const response = await fetch(`${API_URL}/health`);
+                const data = await response.json();
+                responseDiv.textContent = 'Server Status:\n' + JSON.stringify(data, null, 2);
+            } catch (error) {
+                responseDiv.textContent = 'Server Connection Error:\n' + error.message;
+            }
+        });
+
+        // Register form handler
+        document.getElementById('registerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('reg-username').value;
+            const email = document.getElementById('reg-email').value;
+            const password = document.getElementById('reg-password').value;
+            const confirmPassword = document.getElementById('reg-confirm-password').value;
+
+            // Log the request data
+            console.log('Sending registration request:', {
+                username,
+                email,
+                password: '***',
+                confirmPassword: '***'
+            });
+
+            try {
+                const response = await fetch(`${API_URL}/auth/register`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username,
+                        email,
+                        password,
+                        confirmPassword
+                    })
+                });
+
+                console.log('Response status:', response.status);
+                const data = await response.json();
+                console.log('Response data:', data);
+                
+                if (!response.ok) {
+                    if (data.error === 'Validation failed') {
+                        const errorDetails = data.details.map(err => 
+                            `${err.field}: ${err.message}`
+                        ).join('\n');
+                        responseDiv.textContent = `Validation Errors:\n${errorDetails}`;
+                    } else {
+                        responseDiv.textContent = `Error: ${data.error}\nMessage: ${data.message || 'No message provided'}`;
+                    }
+                } else {
+                    responseDiv.textContent = 'Registration Successful!\n' + JSON.stringify(data, null, 2);
+                }
+            } catch (error) {
+                console.error('Registration error:', error);
+                responseDiv.textContent = `Connection Error: ${error.message}\n\nPlease check if:\n1. The server is running\n2. You can access http://localhost:5000/api/health`;
+            }
+        });
+
+        // Login form handler
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            // Log the request data
+            console.log('Sending login request:', {
+                email,
+                password: '***'
+            });
+
+            try {
+                const response = await fetch(`${API_URL}/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email,
+                        password
+                    })
+                });
+
+                console.log('Response status:', response.status);
+                const data = await response.json();
+                console.log('Response data:', data);
+                
+                if (!response.ok) {
+                    if (data.error === 'Validation failed') {
+                        const errorDetails = data.details.map(err => 
+                            `${err.field}: ${err.message}`
+                        ).join('\n');
+                        responseDiv.textContent = `Validation Errors:\n${errorDetails}`;
+                    } else {
+                        responseDiv.textContent = `Error: ${data.error}\nMessage: ${data.message || 'No message provided'}`;
+                    }
+                } else {
+                    responseDiv.textContent = 'Login Successful!\n' + JSON.stringify(data, null, 2);
+
+                    if (data.token) {
+                        // Test the token
+                        const tokenResponse = await fetch(`${API_URL}/test-token`, {
+                            headers: {
+                                'Authorization': `Bearer ${data.token}`
+                            }
+                        });
+                        const tokenData = await tokenResponse.json();
+                        responseDiv.textContent += '\n\nToken Test Response:\n' + JSON.stringify(tokenData, null, 2);
+                    }
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                responseDiv.textContent = `Connection Error: ${error.message}\n\nPlease check if:\n1. The server is running\n2. You can access http://localhost:5000/api/health`;
+            }
+        });
+    </script>
+</body>
+</html> 

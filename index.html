@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VibeMeme - Your Daily Dose of Memes</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-paper-plane"></i>
+                <a href="index.html">VibeMeme</a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="#about">About</a>
+                <a href="main.html">Explore</a>
+                <a href="#contact">Contact</a>
+                <a href="login.html" class="join-btn">Join</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="hero">
+        <div class="hero-content">
+            <h1>Get your<br>daily dose</h1>
+            <p>VibeMeme is a creative and engaging meme-sharing platform designed with a fun and playful aesthetic</p>
+            <a href="main.html" class="explore-btn">Explore</a>
+        </div>
+        <div class="hero-image">
+            <img src="tom_and_jerry_PNG9.png"alt="Meme Character" class="main-character">
+        </div>
+    </main>
+
+    <!-- Mental Health Features -->
+    <div class="mental-health-container">
+        <!-- Affirmation Generator -->
+        <section class="affirmation-section">
+            <h2>How are you feeling today?</h2>
+            <div class="mood-selector">
+                <button class="mood-option" data-mood="happy">😊</button>
+                <button class="mood-option" data-mood="sad">😢</button>
+                <button class="mood-option" data-mood="anxious">😰</button>
+                <button class="mood-option" data-mood="angry">😠</button>
+                <button class="mood-option" data-mood="neutral">😐</button>
+            </div>
+            <div class="affirmation-display">
+                Select your mood to get a personalized affirmation
+            </div>
+        </section>
+
+        <!-- Coping Tips -->
+        <section class="coping-tips">
+            <div class="tip-card">
+                <div class="tip-icon">🧘</div>
+                <h3 class="tip-title">5-4-3-2-1 Grounding</h3>
+                <p class="tip-description">Name 5 things you can see, 4 things you can touch, 3 things you can hear, 2 things you can smell, and 1 thing you can taste.</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">🌬️</div>
+                <h3 class="tip-title">Deep Breathing</h3>
+                <p class="tip-description">Take a deep breath in for 4 counts, hold for 4, exhale for 4. Repeat 4 times.</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">💪</div>
+                <h3 class="tip-title">Positive Self-Talk</h3>
+                <p class="tip-description">Say one nice thing about yourself out loud. You're doing great!</p>
+            </div>
+        </section>
+
+        <!-- Mood-Based Meme Recommendations -->
+        <section class="mood-memes">
+            <div class="mood-memes-header">
+                <h2 class="mood-memes-title">Mood-Boosting Memes</h2>
+            </div>
+            <div class="mood-memes-grid">
+                <div class="mood-meme-card">
+                    <img src="memes/happy1.jpg" alt="Happy Meme" class="mood-meme-image">
+                    <div class="mood-meme-info">
+                        <h3 class="mood-meme-title">Sunshine Vibes</h3>
+                        <p class="mood-meme-description">A dose of pure happiness to brighten your day!</p>
+                    </div>
+                </div>
+                <div class="mood-meme-card">
+                    <img src="memes/happy2.jpg" alt="Happy Meme" class="mood-meme-image">
+                    <div class="mood-meme-info">
+                        <h3 class="mood-meme-title">Good Vibes Only</h3>
+                        <p class="mood-meme-description">Spread positivity with this feel-good meme!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <section class="lets-meme">
+        <h2>Let's Meme</h2>
+        <p>Discover the latest and greatest memes, share your own</p>
+    </section>
+
+    <script src="js/main.js"></script>
+    <script src="js/mental-health.js"></script>
+    <script src="js/test-connection.js"></script>
+</body>
+</html> 

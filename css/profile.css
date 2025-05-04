@@ -1,0 +1,643 @@
+/* Profile Container */
+.profile-container {
+    max-width: 1200px;
+    margin: 80px auto 0;
+    padding: 0 20px;
+}
+
+/* Profile Header */
+.profile-header {
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.profile-cover {
+    position: relative;
+    height: 300px;
+    background: #f5f5f5;
+}
+
+.profile-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.edit-cover,
+.edit-avatar {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.edit-cover {
+    right: 20px;
+    bottom: 20px;
+}
+
+.edit-cover:hover,
+.edit-avatar:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: scale(1.1);
+}
+
+.profile-info {
+    position: relative;
+    padding: 2rem;
+    display: flex;
+    gap: 2rem;
+}
+
+.profile-avatar {
+    position: relative;
+    margin-top: -100px;
+}
+
+.profile-avatar img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.edit-avatar {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #ff4b4b;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.edit-avatar:hover {
+    transform: scale(1.1);
+}
+
+.profile-details {
+    flex: 1;
+}
+
+.profile-name {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+    color: #333;
+}
+
+.profile-username {
+    font-size: 1.1rem;
+    color: #666;
+    margin: 0.5rem 0;
+}
+
+.profile-bio {
+    color: #444;
+    margin: 1rem 0;
+    line-height: 1.5;
+}
+
+.profile-stats {
+    display: flex;
+    gap: 2rem;
+    margin: 1.5rem 0;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+}
+
+.stat-label {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.profile-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.edit-profile-btn,
+.share-profile-btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 24px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: transform 0.2s;
+}
+
+.edit-profile-btn {
+    background: #ff4b4b;
+    color: white;
+}
+
+.share-profile-btn {
+    background: #f5f5f5;
+    color: #333;
+}
+
+.edit-profile-btn:hover,
+.share-profile-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Profile Tabs */
+.profile-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #f5f5f5;
+    padding-bottom: 1rem;
+}
+
+.tab-btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    background: none;
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+}
+
+.tab-btn:hover {
+    color: #ff4b4b;
+}
+
+.tab-btn.active {
+    color: #ff4b4b;
+    border-bottom: 2px solid #ff4b4b;
+    margin-bottom: -1rem;
+}
+
+/* Profile Grid */
+.profile-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* Meme Card in Profile */
+.profile-grid .meme-card {
+    background: white;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.profile-grid .meme-card:hover {
+    transform: translateY(-4px);
+}
+
+.profile-grid .meme-image-container {
+    position: relative;
+    padding-top: 100%;
+}
+
+.profile-grid .meme-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-grid .meme-info {
+    padding: 1rem;
+}
+
+.profile-grid .meme-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+    color: #333;
+}
+
+.profile-grid .meme-stats {
+    display: flex;
+    gap: 1rem;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.profile-grid .meme-stats span {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .profile-container {
+        padding: 0 16px;
+    }
+
+    .profile-cover {
+        height: 200px;
+    }
+
+    .profile-info {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .profile-stats {
+        justify-content: center;
+    }
+
+    .profile-actions {
+        justify-content: center;
+    }
+
+    .profile-tabs {
+        overflow-x: auto;
+        padding-bottom: 0.5rem;
+    }
+
+    .tab-btn {
+        padding: 0.5rem 1rem;
+        white-space: nowrap;
+    }
+
+    .profile-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .profile-name-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .profile-stats {
+        gap: 16px;
+    }
+
+    .tab-btn {
+        padding: 8px 12px;
+    }
+
+    .tab-btn span {
+        display: none;
+    }
+
+    .tab-btn i {
+        font-size: 1.4rem;
+    }
+}
+
+/* Default Avatar Styles */
+.avatar-fallback {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #4a5d4e, #88d2c4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.profile-avatar img:not([src]),
+.profile-avatar img[src=""],
+.user-profile .avatar:not([src]),
+.user-profile .avatar[src=""] {
+    display: none;
+}
+
+.profile-avatar img:not([src]) + .avatar-fallback,
+.profile-avatar img[src=""] + .avatar-fallback,
+.user-profile .avatar:not([src]) + .avatar-fallback,
+.user-profile .avatar[src=""] + .avatar-fallback {
+    display: flex;
+}
+
+/* Profile Cover Fallback */
+.profile-cover-fallback {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #4a5d4e 0%, #88d2c4 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.1);
+    font-size: 8rem;
+    overflow: hidden;
+}
+
+.profile-cover img:not([src]),
+.profile-cover img[src=""] {
+    display: none;
+}
+
+.profile-cover img:not([src]) + .profile-cover-fallback,
+.profile-cover img[src=""] + .profile-cover-fallback {
+    display: flex;
+}
+
+/* User Menu Profile Picture */
+.user-profile {
+    position: relative;
+    cursor: pointer;
+}
+
+.user-profile .avatar-container {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--background-white);
+    transition: all 0.3s ease;
+}
+
+.user-profile:hover .avatar-container {
+    transform: scale(1.1);
+    box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+/* Popup Styles */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.popup.active {
+    display: flex;
+    opacity: 1;
+}
+
+.popup-content {
+    background: white;
+    border-radius: 24px;
+    padding: 2rem;
+    margin: auto;
+    position: relative;
+    max-width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.popup.active .popup-content {
+    transform: translateY(0);
+}
+
+.close-popup {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #666;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.close-popup:hover {
+    background: #f5f5f5;
+    color: #333;
+}
+
+/* Edit Profile Popup */
+.edit-profile-popup .popup-content {
+    max-width: 500px;
+    width: 100%;
+}
+
+.edit-profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 0.75rem;
+    border: 2px solid #f5f5f5;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #ff4b4b;
+    outline: none;
+}
+
+/* Share Profile Popup */
+.share-profile-popup .popup-content {
+    max-width: 400px;
+    width: 100%;
+}
+
+.share-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.share-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    border: 2px solid #f5f5f5;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.share-option:hover {
+    border-color: #ff4b4b;
+    background: #fff5f5;
+}
+
+.share-option i {
+    font-size: 1.5rem;
+    color: #666;
+}
+
+/* Edit Avatar Popup */
+.edit-avatar-popup .popup-content {
+    max-width: 400px;
+    width: 100%;
+}
+
+.avatar-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    border: 2px dashed #f5f5f5;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.avatar-upload:hover {
+    border-color: #ff4b4b;
+    background: #fff5f5;
+}
+
+.avatar-upload i {
+    font-size: 2rem;
+    color: #666;
+}
+
+/* Share Meme Popup */
+.share-meme-popup .popup-content {
+    max-width: 400px;
+    width: 100%;
+}
+
+.share-meme-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.share-meme-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    border: 2px solid #f5f5f5;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.share-meme-option:hover {
+    border-color: #ff4b4b;
+    background: #fff5f5;
+}
+
+.share-meme-option i {
+    font-size: 1.5rem;
+    color: #666;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .popup-content {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+
+    .share-options,
+    .share-meme-options {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .popup-content {
+        margin: 0.5rem;
+        padding: 1rem;
+    }
+
+    .share-options,
+    .share-meme-options {
+        grid-template-columns: 1fr;
+    }
+}
+
+.error-message, .success-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 5px;
+    color: white;
+    font-weight: 500;
+    z-index: 1000;
+    animation: slideIn 0.3s ease-in-out;
+}
+
+.error-message {
+    background-color: #ff6b6b;
+}
+
+.success-message {
+    background-color: #51cf66;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+} 
